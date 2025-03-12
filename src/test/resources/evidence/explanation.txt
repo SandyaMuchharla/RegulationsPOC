@@ -1,0 +1,28 @@
+This project is a maven based project and uses Selenium with Java+Cucumber(BDD) framework.
+
+**Executing tests**
+
+mvn clean test
+
+**To view the results in allure report**
+
+allure serve target/allure-results
+------------------------------------------------------------
+Two scenarios have been constructed for testing:
+
+1)Duplicate Column Check:
+The first scenario verifies that the CSV files do not contain duplicate columns. This test case passes successfully as all columns in the provided files are unique. To validate the test, I intentionally duplicated one of the columns, and the test correctly flagged it as an error.
+
+2)Data Type Validation:
+The second scenario is designed to extract the "code" and "type" columns into a hash map. It then reads through all CSV files column-wise and verifies that the data type specified in the Excel file matches the data in the CSV files. The code is written to trigger an assertion failure if no match is found. Soft assertions are used to ensure the execution continues even after encountering failures. This allows all files and columns to be processed, and at the end, the test reports all failures, including the file name, row number, and column where the mismatch occurred.
+
+Observations:
+
+The "country" type and closed set of options are currently defined as alphanumeric text. This can be improved by using predefined codes for more accurate validation.
+
+No entries were found in the Excel file's data definitions for y_99.01.csv. This issue is captured in the assertions and reported as a failure.
+
+The tests have been implemented based on my current understanding. If there are any discrepancies or additional requirements, I am happy to adjust the code accordingly.
+
+Please let me know if further explanation required.
+
